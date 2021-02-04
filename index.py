@@ -4,8 +4,8 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
-from app import app
 from pages import contact
+from app import server
 
 search_bar = dbc.Row(
     [
@@ -207,6 +207,10 @@ def render_page_content(pathname):
         ]
     )
 
+
+server = flask.Flask(__name__)
+app = dash.Dash(__name__)
+app.config.suppress_callback_exceptions = True
 
 if __name__ == '__main__':
     app.run_server(debug=True)
